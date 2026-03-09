@@ -1,0 +1,1 @@
+# Rust Programming Task: Implementing a Simple File Encryption Tool
