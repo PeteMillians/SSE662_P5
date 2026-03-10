@@ -1,6 +1,7 @@
 use std::env;
 use std::fs;
 use std::io::{self, Write};
+use std::io::ErrorKind;
 
 fn xor_cipher(data: &[u8]) -> Vec<u8> {
 
@@ -39,7 +40,17 @@ fn main() -> io::Result<()> {
     }
 
     // Read input file
-    let input_data : Vec<u8> = fs::read(&args[1])?;
+    let input_data = match fs::read(&args[1]) {
+        Ok(bytes) => bytes,
+        Err(e) if e.kind() == ErrorKind::NotFound => {
+            println!("File not found");
+            std::process::exit(1);
+        }
+        Err(e) => {
+            println!("Some other error: {}", e);
+            std::process::exit(1);
+        }
+    };
 
     // Encrypt or decrpy the file
     let encrypted : Vec<u8> = xor_cipher(&input_data);
