@@ -1,2 +1,2 @@
-./rust_file_encryption/target
-./rust_file_encryption/Cargo.lock
+rust_file_encryption/target
+rust_file_encryption/Cargo.lock
