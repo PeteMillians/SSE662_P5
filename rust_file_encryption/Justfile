@@ -1,28 +1,37 @@
 # Justfile to handle different actions to compile or test the program
 
-# Default recipe: run the program
-default: run
-
 # Build in debug mode
 build:
+    #! powershell
     cargo build
 
 # Build in release mode
 release:
+    #! powershell
     cargo build --release
 
 # Run with arguments
 run input output:
+    #! powershell
     cargo run -- {{input}} {{output}}
 
 # Run tests
 test:
+    #! powershell
     cargo test
 
 # Format code
 fmt:
+    #! powershell
     cargo fmt
 
 # Clean build artifacts
 clean:
+    #! powershell
+    cargo clean
+
+# Run and then clean the contents
+run_clean input output:
+    #! powershell
+    cargo run -- {{input}} {{output}}
     cargo clean
