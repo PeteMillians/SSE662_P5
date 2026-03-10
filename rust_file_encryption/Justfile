@@ -35,3 +35,11 @@ run_clean input output:
     #! powershell
     cargo run -- {{input}} {{output}}
     cargo clean
+
+# Test, Build, Run, and then Clean the package
+full input output:
+    #! powershell
+    cargo test
+    cargo build
+    cargo run -- {{input}} {{output}}
+    cargo clean
