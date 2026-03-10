@@ -1,0 +1,28 @@
+# Justfile to handle different actions to compile or test the program
+
+# Default recipe: run the program
+default: run
+
+# Build in debug mode
+build:
+    cargo build
+
+# Build in release mode
+release:
+    cargo build --release
+
+# Run with arguments
+run input output:
+    cargo run -- {{input}} {{output}}
+
+# Run tests
+test:
+    cargo test
+
+# Format code
+fmt:
+    cargo fmt
+
+# Clean build artifacts
+clean:
+    cargo clean
