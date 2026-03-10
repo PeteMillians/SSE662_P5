@@ -55,3 +55,34 @@ fn main() -> io::Result<()> {
     Ok(())
 
 }
+
+/*
+--------------------
+-   TEST METHODS   -
+--------------------
+*/
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn encrypt_changes_data() {
+        let data = b"asdlkfjhsalkdghpwaiuerh aslkd jhLZKbx.;aed  ";
+
+        let encrypted = xor_cipher(data);
+
+        assert_ne!(encrypted, data);
+    }
+    
+    #[test]
+    fn decrypt_reverts_back() {
+        let message = b"hello world";
+        
+        let encrypted = xor_cipher(message);
+        let decrypted = xor_cipher(&encrypted);
+        
+        assert_eq!(decrypted, message);
+    }
+    
+}
