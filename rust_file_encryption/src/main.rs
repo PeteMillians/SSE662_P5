@@ -79,6 +79,7 @@ mod tests {
 
     #[test]
     fn encrypt_changes_data() {
+        // Tests that the xor_cipher method actually changes the data
         let data = b"asdlkfjhsalkdghpwaiuerh aslkd jhLZKbx.;aed  ";
 
         let encrypted = xor_cipher(data);
@@ -88,6 +89,7 @@ mod tests {
     
     #[test]
     fn decrypt_reverts_back() {
+        // Tests that the xor_cipher can encode and decode the message properly
         let message = b"hello world";
         
         let encrypted = xor_cipher(message);
