@@ -1,0 +1,45 @@
+# Justfile to handle different actions to compile or test the program
+
+# Build in debug mode
+build:
+    #! powershell
+    cargo build
+
+# Build in release mode
+release:
+    #! powershell
+    cargo build --release
+
+# Run with arguments
+run input output:
+    #! powershell
+    cargo run -- {{input}} {{output}}
+
+# Run tests
+test:
+    #! powershell
+    cargo test
+
+# Format code
+fmt:
+    #! powershell
+    cargo fmt
+
+# Clean build artifacts
+clean:
+    #! powershell
+    cargo clean
+
+# Run and then clean the contents
+run_clean input output:
+    #! powershell
+    cargo run -- {{input}} {{output}}
+    cargo clean
+
+# Test, Build, Run, and then Clean the package
+full input output:
+    #! powershell
+    cargo test
+    cargo build
+    cargo run -- {{input}} {{output}}
+    cargo clean
